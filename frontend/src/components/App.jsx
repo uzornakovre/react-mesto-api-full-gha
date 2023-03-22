@@ -193,7 +193,6 @@ function App() {
 
   function handleCardLike(card) {
     const isLiked = card.likes.some(like => like._id === currentUser._id || like === currentUser._id);
-    console.log(card.likes);
 
     if (!isLiked) {
       api.likeCard(card._id, card.owner, jwt)
