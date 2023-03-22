@@ -171,12 +171,11 @@ function App() {
 
   function handleCardDelete(card) {
     setIsLoading(true);
-    const isOwn = card.owner._id === currentUser._id;
+    const isOwn = card.owner._id === currentUser._id || card.owner === currentUser._id ;
 
     if (isOwn) {
       api.deleteCard(card._id, jwt)
         .then(() => {
-          console.log(card._id)
           setCards((state) => state.filter((c) => c._id !== card._id));
           closeAllPopups();
         })
