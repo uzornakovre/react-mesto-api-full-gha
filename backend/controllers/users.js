@@ -66,7 +66,7 @@ module.exports.updateUserInfo = (req, res, next) => {
     },
   )
     .then((user) => {
-      res.status(OK.CODE).send({ data: user });
+      res.status(OK.CODE).send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -88,7 +88,7 @@ module.exports.updateUserAvatar = (req, res, next) => {
       upsert: true,
     },
   )
-    .then((user) => res.status(OK.CODE).send({ data: user }))
+    .then((user) => res.status(OK.CODE).send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next({ statusCode: INVALID_DATA.CODE, message: INVALID_DATA.MESSAGE });

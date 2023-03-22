@@ -9,7 +9,7 @@ function Card({ card,
   const currentUser = useContext(CurrentUserContext);
   const isOwn       = card.owner._id === currentUser._id;
   const isLiked     = card.likes.some(like => like._id === currentUser._id);
-  
+
   function handleClick() {
     onCardClick(card);
   }
@@ -25,7 +25,7 @@ function Card({ card,
   return (
     <div className="elements__list-item">
       <article className="element">
-        <img className="element__image" 
+        <img className="element__image"
              src={card.link}
              alt={`Изображение ${card.name}`}
              onClick={handleClick}

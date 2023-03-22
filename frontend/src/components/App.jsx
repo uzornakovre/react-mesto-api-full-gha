@@ -79,7 +79,7 @@ function App() {
       Promise.all([api.getUserInfo(jwt), api.getInitialCards(jwt)])
       .then(([userData, cardsData]) => {
         setCurrentUser(userData);
-        setCards(cardsData);
+        setCards(cardsData.reverse());
       })
       .catch((error) => {
         console.log(`Ошибка при получении данных: ${error}`);
@@ -91,7 +91,7 @@ function App() {
 
   function handleUpdateUser(userData) {
     setIsLoading(true);
-    api.changeUserInfo(userData)
+    api.changeUserInfo(userData, jwt)
       .then((newUserData) => {
         setCurrentUser(newUserData)
         closeAllPopups();
@@ -108,7 +108,7 @@ function App() {
 
   function handleUpdateAvatar(userData) {
     setIsLoading(true);
-    api.changeUserAvatar(userData)
+    api.changeUserAvatar(userData, jwt)
       .then((newUserData) => {
         setCurrentUser(newUserData);
         closeAllPopups();
@@ -142,7 +142,7 @@ function App() {
 
   function handleAddPlaceSubmit(cardData) {
     setIsLoading(true);
-    api.createCard(cardData)
+    api.createCard(cardData, jwt)
       .then((newCard) => {
         setCards([newCard, ...cards]);
         closeAllPopups();
@@ -174,8 +174,9 @@ function App() {
     const isOwn = card.owner._id === currentUser._id;
 
     if (isOwn) {
-      api.deleteCard(card._id)
+      api.deleteCard(card._id, jwt)
         .then(() => {
+          console.log(card._id)
           setCards((state) => state.filter((c) => c._id !== card._id));
           closeAllPopups();
         })
@@ -194,7 +195,7 @@ function App() {
     const isLiked = card.likes.some(like => like._id === currentUser._id);
 
     if (!isLiked) {
-      api.likeCard(card._id, card.owner)
+      api.likeCard(card._id, card.owner, jwt)
         .then((newCard) => {
           setCards((state) => state.map((c) => c._id === card._id ? newCard : c))
         })
@@ -202,7 +203,7 @@ function App() {
           console.log(`Ошибка при постановке лайка: ${error}`);
         })
     } else {
-      api.dislikeCard(card._id, card.owner)
+      api.dislikeCard(card._id, card.owner, jwt)
         .then((newCard) => {
           setCards((state) => state.map((c) => c._id === card._id ? newCard : c))
         })

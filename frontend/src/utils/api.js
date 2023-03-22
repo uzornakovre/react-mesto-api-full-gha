@@ -30,10 +30,13 @@ class Api {
     }).then(this._checkStatus)
   }
 
-  changeUserInfo(userData) {
+  changeUserInfo(userData, token) {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        'Authorization': `Bearer ${token}`
+      },
       body: JSON.stringify({
         name:  userData.name,
         about: userData.about
@@ -41,20 +44,26 @@ class Api {
     }).then(this._checkStatus);
   }
 
-  changeUserAvatar(userData) {
+  changeUserAvatar(userData, token) {
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        'Authorization': `Bearer ${token}`
+      },
       body: JSON.stringify({
         avatar: userData.avatar
       })
     }).then(this._checkStatus);
   }
 
-  createCard(cardData) {
+  createCard(cardData, token) {
     return fetch(`${this._url}/cards`, {
       method: 'POST',
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        'Authorization': `Bearer ${token}`
+      },
       body: JSON.stringify({
         name: cardData.placeName,
         link: cardData.placeLink
@@ -62,27 +71,36 @@ class Api {
     }).then(this._checkStatus)
   }
 
-  deleteCard(id) {
+  deleteCard(id, token) {
     return fetch(`${this._url}/cards/${id}`, {
       method: 'DELETE',
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        'Authorization': `Bearer ${token}`,
+      }
     }).then(this._checkStatus)
   }
 
-  likeCard(id, owner) {
+  likeCard(id, owner, token) {
     return fetch(`${this._url}/cards/${id}/likes`, {
       method: 'PUT',
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        'Authorization': `Bearer ${token}`
+      },
       body: JSON.stringify({
         likes: [owner]
       })
     }).then(this._checkStatus)
   }
 
-  dislikeCard(id, owner) {
+  dislikeCard(id, owner, token) {
     return fetch(`${this._url}/cards/${id}/likes`, {
       method: 'DELETE',
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        'Authorization': `Bearer ${token}`
+      },
       body: JSON.stringify({
         likes: [owner]
       })

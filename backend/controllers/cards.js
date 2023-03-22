@@ -19,7 +19,7 @@ module.exports.createCard = (req, res, next) => {
   const ownerId = req.user._id;
 
   Card.create({ name, link, owner: ownerId })
-    .then((card) => res.status(CREATED.CODE).send({ data: card }))
+    .then((card) => res.status(CREATED.CODE).send(card))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next({ statusCode: INVALID_DATA.CODE, message: INVALID_DATA.MESSAGE });
@@ -35,9 +35,9 @@ module.exports.deleteCard = (req, res, next) => {
   Card.findById(cardId)
     .then((card) => {
       if (card && String(card.owner) === req.user._id) {
-        Card.deleteOne({ cardId })
+        Card.deleteOne(card._id)
           .then(() => {
-            res.status(OK.CODE).send({ message: FORBIDDEN.MESSAGE });
+            res.status(OK.CODE).send({ message: OK.DEL_CARD_MESSAGE });
           })
           .catch((err) => next(err));
       } else if (card) {
