@@ -1,0 +1,16 @@
+.auth__submit_disabled {
+  color: #FFF;
+  background-color: transparent;
+  border: 1px solid #FFF;
+  opacity: .5;
+  cursor: default;
+}
+
+.auth__submit_disabled:hover {
+  opacity: .5;
+  font-size: 18px;
+}
+
+.auth__submit_disabled:active {
+  opacity: .5;
+}

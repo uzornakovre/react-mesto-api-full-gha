@@ -1,0 +1,24 @@
+@media screen and (max-width: 570px) {
+  .burger__line, .burger__line::before, .burger__line::after {
+    display: block;
+    position: absolute;
+    width: 24px;
+    height: 3px;
+    background-color: #FFF;
+    transition: all .5s cubic-bezier(.25,.75,.25,.75);
+  }
+
+  .burger__line {
+    content: '';
+  }
+
+  .burger__line::before {
+    content: '';
+    top: 9px;
+  }
+
+  .burger__line::after {
+    content: '';
+    top: -9px;
+  }
+}

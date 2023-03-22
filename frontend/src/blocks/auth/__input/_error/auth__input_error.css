@@ -1,0 +1,6 @@
+.auth__input_error {
+  border-color: #F00;
+}
+.auth__input_error:focus {
+  border-color: #F00;
+}

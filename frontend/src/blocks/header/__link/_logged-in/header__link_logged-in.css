@@ -1,0 +1,8 @@
+.header__link_logged-in {
+  color: #A9A9A9
+}
+
+.header__link_logged-in:hover {
+  opacity: 1;
+  color: #FFF;
+}
