@@ -44,6 +44,7 @@ export const auth = new Auth({
   baseUrl: 'https://api.i-share.students.nomoredomains.work',
   headers: {
     'Accept': 'application/json',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Origin': 'https://i-share.students.nomoredomains.work'
   }
 });
