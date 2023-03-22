@@ -66,7 +66,7 @@ class Api {
       },
       body: JSON.stringify({
         name: cardData.placeName,
-        link: cardData.placeLink
+        link: cardData.placeLink,
       })
     }).then(this._checkStatus)
   }
