@@ -12,15 +12,21 @@ class Api {
     }
   }
 
-  getUserInfo() {
+  getUserInfo(token) {
     return fetch(`${this._url}/users/me`, {
-      headers: this._headers
+      headers: {
+        ...this._headers,
+        'Authorization': `Bearer ${token}`
+      }
     }).then(this._checkStatus)
   }
 
-  getInitialCards() {
+  getInitialCards(token) {
     return fetch(`${this._url}/cards`, {
-      headers: this._headers
+      headers: {
+        ...this._headers,
+        'Authorization': `Bearer ${token}`
+      }
     }).then(this._checkStatus)
   }
 
@@ -85,10 +91,10 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-54',
+  baseUrl: 'http://localhost:3000',
   headers: {
-    authorization: 'a67dcede-ed6f-4bc9-92bc-dd4c6eb33b08',
+    // authorization: 'a67dcede-ed6f-4bc9-92bc-dd4c6eb33b08',
     'Content-Type': 'application/json',
     'Origin': 'http://localhost:3001'
   }
-}); 
+});

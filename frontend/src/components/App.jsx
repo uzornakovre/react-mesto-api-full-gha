@@ -39,6 +39,8 @@ function App() {
   const navigate                                            = useNavigate();
   const formData                                            = useFormData();
 
+  const jwt = localStorage.getItem('jwt');
+
   // Обработчик входа/выхода на сайте, проверка токена
 
   function handleLogin() {
@@ -51,7 +53,6 @@ function App() {
   }
 
   function tokenCheck() {
-    const jwt = localStorage.getItem('jwt');
     if (jwt) {
       auth.checkToken(jwt)
         .then((res) => {
@@ -59,8 +60,8 @@ function App() {
             setLoggedIn(true);
             navigate('/', {replace: true});
             setUserData({
-              email: res.data.email,
-              id:    res.data._id
+              email: res.email,
+              id:    res._id
             });
           }
         })
@@ -75,7 +76,7 @@ function App() {
   useEffect(() => {
     tokenCheck();
     if (loggedIn) {
-      Promise.all([api.getUserInfo(), api.getInitialCards()])
+      Promise.all([api.getUserInfo(jwt), api.getInitialCards(jwt)])
       .then(([userData, cardsData]) => {
         setCurrentUser(userData);
         setCards(cardsData);
@@ -127,13 +128,13 @@ function App() {
   }
 
   // Обработчик клика по кнопке редактирования профиля
-  
+
   function handleEditProfileClick() {
     setEditProfilePopupState(true);
   }
 
   // Обработчики добавления новой карточки
-  
+
   function handleAddPlaceClick() {
     setAddPlacePopupState(true);
     // resetFormValues();
@@ -191,7 +192,7 @@ function App() {
 
   function handleCardLike(card) {
     const isLiked = card.likes.some(like => like._id === currentUser._id);
-    
+
     if (!isLiked) {
       api.likeCard(card._id, card.owner)
         .then((newCard) => {
@@ -261,7 +262,7 @@ function App() {
         isImagePopupOpen        ||
         infoToolTipState.open) {
           document.addEventListener('keydown', handleEscClick);
-        }     
+        }
       return () => {
         document.removeEventListener('keydown', handleEscClick);
       }
@@ -288,13 +289,13 @@ function App() {
               </>
             } />
             <Route path="/sign-up"
-                   element={<Link 
+                   element={<Link
                      to="/sign-in"
                      className="header__link"
                      onClick={formData.resetFormValues}>Войти</Link>}
             />
-            <Route path="/sign-in" 
-                   element={<Link 
+            <Route path="/sign-in"
+                   element={<Link
                      to="/sign-up"
                      className="header__link"
                      onClick={formData.resetFormValues}>Регистрация</Link>}
@@ -303,10 +304,10 @@ function App() {
         </Header>
 
         <Routes>
-          <Route path="*" 
-                 element={<ProtectedRouteElement 
-                   element={Main}                                
-                   loggedIn={loggedIn}                              
+          <Route path="*"
+                 element={<ProtectedRouteElement
+                   element={Main}
+                   loggedIn={loggedIn}
                    onEditProfile={handleEditProfileClick}
                    onAddPlace={handleAddPlaceClick}
                    onEditAvatar={handleEditAvatarClick}

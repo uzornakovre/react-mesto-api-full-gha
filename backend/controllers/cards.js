@@ -10,7 +10,7 @@ const {
 module.exports.getCards = (req, res, next) => {
   Card.find({})
     .populate(['owner', 'likes'])
-    .then((cards) => res.status(OK.CODE).send({ data: cards }))
+    .then((cards) => res.status(OK.CODE).send(cards))
     .catch(next);
 };
 
