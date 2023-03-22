@@ -113,6 +113,6 @@ export const api = new Api({
   headers: {
     // authorization: 'a67dcede-ed6f-4bc9-92bc-dd4c6eb33b08',
     'Content-Type': 'application/json',
-    'Origin': 'http://localhost:3001'
+    'Origin': 'https://i-share.students.nomoredomains.work'
   }
 });
