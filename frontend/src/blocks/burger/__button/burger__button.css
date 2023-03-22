@@ -1,0 +1,16 @@
+.burger__button {
+  background-color: inherit;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  z-index: 3;
+}
+
+@media screen and (max-width: 570px) {
+  .burger__button {
+    display: flex;
+  }
+}

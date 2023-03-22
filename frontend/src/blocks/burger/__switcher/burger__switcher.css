@@ -1,0 +1,22 @@
+.burger__switcher {
+  opacity: 0;
+}
+
+@media screen and (max-width: 570px) {
+  .burger__switcher:checked ~ .burger__button > .burger__line {
+    transform: rotate(-360deg);
+    background-color: transparent;
+    height: 20px;
+    border-radius: 50%;
+  }
+
+  .burger__switcher:checked ~ .burger__button > .burger__line::after {
+    top: 9px;
+    transform: rotate(-315deg);
+  }
+
+  .burger__switcher:checked ~ .burger__button > .burger__line::before {
+    top: 9px;
+    transform: rotate(-405deg);
+  }
+}

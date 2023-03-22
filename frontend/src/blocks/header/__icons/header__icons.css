@@ -1,0 +1,19 @@
+.header__icons {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 980px) {
+  .header__icons {
+    padding-left: 27px;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .header__icons {
+    padding-right: 27px;
+  }
+}
