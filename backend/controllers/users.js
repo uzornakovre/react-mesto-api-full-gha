@@ -37,7 +37,7 @@ module.exports.createUser = (req, res, next) => {
 
   if (allowedCors.includes(origin)) {
     res.header('Access-Control-Allow-Origin', origin);
-}
+  }
 
   bcrypt.hash(password, 10)
     .then((hash) => User.create({
