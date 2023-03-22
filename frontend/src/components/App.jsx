@@ -192,12 +192,13 @@ function App() {
   // Обработчик, отвечающий за установку/снятие лайка
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(like => like._id === currentUser._id);
+    const isLiked = card.likes.some(like => like._id === currentUser._id || like === currentUser._id);
+    console.log(card.likes);
 
     if (!isLiked) {
       api.likeCard(card._id, card.owner, jwt)
         .then((newCard) => {
-          setCards((state) => state.map((c) => c._id === card._id ? newCard : c))
+          setCards((state) => state.map((c) => c._id === card._id ? newCard.data : c))
         })
         .catch((error) => {
           console.log(`Ошибка при постановке лайка: ${error}`);
@@ -205,7 +206,7 @@ function App() {
     } else {
       api.dislikeCard(card._id, card.owner, jwt)
         .then((newCard) => {
-          setCards((state) => state.map((c) => c._id === card._id ? newCard : c))
+          setCards((state) => state.map((c) => c._id === card._id ? newCard.data : c))
         })
         .catch((error) => {
           console.log(`Ошибка при удалении лайка: ${error}`);

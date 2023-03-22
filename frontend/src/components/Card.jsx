@@ -8,7 +8,7 @@ function Card({ card,
 
   const currentUser = useContext(CurrentUserContext);
   const isOwn       = card.owner._id === currentUser._id || card.owner === currentUser._id;
-  const isLiked     = card.likes.some(like => like._id === currentUser._id);
+  const isLiked     = card.likes.some(like => like._id === currentUser._id || like === currentUser._id);
 
   function handleClick() {
     onCardClick(card);

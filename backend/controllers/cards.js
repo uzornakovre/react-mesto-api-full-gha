@@ -63,7 +63,7 @@ module.exports.likeCard = (req, res, next) => {
   )
     .then((card) => {
       if (card) {
-        res.status(OK.CODE).send({ message: OK.LIKE_CARD_MESSAGE });
+        res.status(OK.CODE).send({ data: card, message: OK.LIKE_CARD_MESSAGE });
       } else {
         next({ statusCode: NOT_FOUND.CODE, message: NOT_FOUND.CARD_MESSAGE });
       }
@@ -85,7 +85,7 @@ module.exports.dislikeCard = (req, res, next) => {
   )
     .then((card) => {
       if (card) {
-        res.status(OK.CODE).send({ message: OK.DISLIKE_CARD_MESSAGE });
+        res.status(OK.CODE).send({ data: card, message: OK.DISLIKE_CARD_MESSAGE });
       } else {
         next({ statusCode: NOT_FOUND.CODE, message: NOT_FOUND.CARD_MESSAGE });
       }
