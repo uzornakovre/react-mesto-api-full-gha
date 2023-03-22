@@ -5,7 +5,7 @@ const errorHandler = (err, req, res, next) => {
 
   let message;
   if (statusCode === INTERNAL.CODE) {
-    message = INTERNAL.MESSAGE;
+    message = `${INTERNAL.MESSAGE}: ${err.message}`;
   } else {
     message = err.message;
   }

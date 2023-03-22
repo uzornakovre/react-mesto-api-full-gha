@@ -2,7 +2,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = require('../config');
 const User = require('../models/user');
-const { allowedCors } = require('../utils/allowedCors');
 const {
   OK,
   CREATED,
@@ -30,14 +29,9 @@ module.exports.getUser = (req, res, next) => {
 };
 
 module.exports.createUser = (req, res, next) => {
-  const { origin } = req.headers;
   const {
     email, password, name, about, avatar,
   } = req.body;
-
-  if (allowedCors.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-  }
 
   bcrypt.hash(password, 10)
     .then((hash) => User.create({
