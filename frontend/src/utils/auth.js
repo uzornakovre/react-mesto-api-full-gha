@@ -45,6 +45,6 @@ export const auth = new Auth({
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
-    // 'Origin': 'https://i-share.students.nomoredomains.work'
+    'Origin': 'https://i-share.students.nomoredomains.work'
   }
 });
