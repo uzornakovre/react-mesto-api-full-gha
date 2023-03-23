@@ -41,7 +41,8 @@ class Auth {
 }
 
 export const auth = new Auth({
-  baseUrl: 'https://api.i-share.students.nomoredomains.work',
+  // baseUrl: 'https://api.i-share.students.nomoredomains.work',
+  baseUrl: 'http://localhost:3000',
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',

@@ -109,7 +109,8 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: 'https://api.i-share.students.nomoredomains.work',
+  // baseUrl: 'https://api.i-share.students.nomoredomains.work',
+  baseUrl: 'http://localhost:3000',
   headers: {
     // authorization: 'a67dcede-ed6f-4bc9-92bc-dd4c6eb33b08',
     'Content-Type': 'application/json',
