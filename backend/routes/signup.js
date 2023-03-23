@@ -8,7 +8,7 @@ router.post('/', celebrate({
     email: Joi.string().email().required(),
     password: Joi.string().required().min(4),
     name: Joi.string().min(2).max(30),
-    about: Joi.string().min(2).max(30),
+    about: Joi.string().min(2).max(28),
     avatar: Joi.string().pattern(regexUrl),
   }),
 }), createUser);
