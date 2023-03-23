@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
 const { regexUrl, regexId } = require('../utils/validationRules');
-// const auth = require('../middlewares/auth');
+const auth = require('../middlewares/auth');
 const {
   getUsers,
   getUser,
@@ -11,7 +11,7 @@ const {
 } = require('../controllers/users');
 
 // router.use(auth);
-router.get('/', getUsers);
+router.get('/', auth, getUsers);
 router.get('/me', getCurrentUser);
 router.get('/:userId', celebrate({
   params: Joi.object().keys({
