@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
 const { regexUrl, regexId } = require('../utils/validationRules');
-// const auth = require('../middlewares/auth');
+const auth = require('../middlewares/auth');
 const {
   getCards,
   createCard,
@@ -12,7 +12,7 @@ const {
 
 router.get('/', getCards);
 // router.use(auth);
-router.post('/', celebrate({
+router.post('/', auth, celebrate({
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30),
     link: Joi.string().required().pattern(regexUrl),
@@ -24,12 +24,12 @@ router.delete('/:cardId', celebrate({
     cardId: Joi.string().pattern(regexId),
   }),
 }), deleteCard);
-router.put('/:cardId/likes', celebrate({
+router.put('/:cardId/likes', auth, celebrate({
   params: Joi.object().keys({
     cardId: Joi.string().pattern(regexId),
   }),
 }), likeCard);
-router.delete('/:cardId/likes', celebrate({
+router.delete('/:cardId/likes', auth, celebrate({
   params: Joi.object().keys({
     cardId: Joi.string().pattern(regexId),
   }),

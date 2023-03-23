@@ -18,13 +18,13 @@ router.get('/:userId', celebrate({
     userId: Joi.string().pattern(regexId),
   }),
 }), getUser);
-router.patch('/me', celebrate({
+router.patch('/me', auth, celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
     about: Joi.string().min(2).max(30),
   }),
 }), updateUserInfo);
-router.patch('/me/avatar', celebrate({
+router.patch('/me/avatar', auth, celebrate({
   body: Joi.object().keys({
     avatar: Joi.string().pattern(regexUrl),
   }),
