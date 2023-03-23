@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
 const { regexUrl, regexId } = require('../utils/validationRules');
-const auth = require('../middlewares/auth');
+// const auth = require('../middlewares/auth');
 const {
   getCards,
   createCard,
@@ -11,7 +11,7 @@ const {
 } = require('../controllers/cards');
 
 router.get('/', getCards);
-router.use(auth);
+// router.use(auth);
 router.post('/', celebrate({
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30),
