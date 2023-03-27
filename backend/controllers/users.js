@@ -2,6 +2,9 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET, NODE_ENV } = require('../config');
 const User = require('../models/user');
+const InvalidDataError = require('../utils/errors/InvalidDataError');
+const NotFoundError = require('../utils/errors/NotFoundError');
+const ConflictError = require('../utils/errors/ConflictError');
 const {
   OK,
   CREATED,
@@ -22,7 +25,7 @@ module.exports.getUser = (req, res, next) => {
       if (user) {
         res.status(OK.CODE).send({ data: user });
       } else {
-        next({ statusCode: NOT_FOUND.CODE, message: NOT_FOUND.USER_MESSAGE });
+        next(new NotFoundError(NOT_FOUND.USER_MESSAGE));
       }
     })
     .catch(next);
@@ -45,9 +48,9 @@ module.exports.createUser = (req, res, next) => {
     }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        next({ statusCode: INVALID_DATA.CODE, message: INVALID_DATA.MESSAGE });
+        next(new InvalidDataError(INVALID_DATA.MESSAGE));
       } else if (err.code === 11000) {
-        next({ statusCode: CONFLICT.CODE, message: CONFLICT.EMAIL_MESSAGE });
+        next(new ConflictError(CONFLICT.EMAIL_MESSAGE));
       } else {
         next(err);
       }
@@ -70,7 +73,7 @@ module.exports.updateUserInfo = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        res.status(INVALID_DATA.CODE).send(INVALID_DATA.MESSAGE);
+        next(new InvalidDataError(INVALID_DATA.MESSAGE));
       } else {
         next(err);
       }
@@ -91,7 +94,7 @@ module.exports.updateUserAvatar = (req, res, next) => {
     .then((user) => res.status(OK.CODE).send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        next({ statusCode: INVALID_DATA.CODE, message: INVALID_DATA.MESSAGE });
+        next(new InvalidDataError(INVALID_DATA.MESSAGE));
       } else {
         next(err);
       }
@@ -115,7 +118,7 @@ module.exports.getCurrentUser = (req, res, next) => {
       if (user) {
         res.status(OK.CODE).send(user);
       } else {
-        next({ statusCode: NOT_FOUND.CODE, message: NOT_FOUND.USER_MESSAGE });
+        next(new NotFoundError(NOT_FOUND.USER_MESSAGE));
       }
     })
     .catch(next);
