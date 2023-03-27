@@ -85,6 +85,7 @@ function App() {
         console.log(`Ошибка при получении данных: ${error}`);
       });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loggedIn]);
 
   // Обработчик обновления данных о пользователе
@@ -266,6 +267,7 @@ function App() {
       return () => {
         document.removeEventListener('keydown', handleEscClick);
       }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isEditProfilePopupOpen,
       isAddPlacePopupOpen,
       isEditAvatarPopupOpen,
