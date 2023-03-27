@@ -1,4 +1,7 @@
 const Card = require('../models/card');
+const InvalidDataError = require('../utils/errors/InvalidDataError');
+const ForbiddenError = require('../utils/errors/ForbiddenError');
+const NotFoundError = require('../utils/errors/NotFoundError');
 const {
   OK,
   CREATED,
@@ -22,7 +25,7 @@ module.exports.createCard = (req, res, next) => {
     .then((card) => res.status(CREATED.CODE).send(card))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        next({ statusCode: INVALID_DATA.CODE, message: INVALID_DATA.MESSAGE });
+        next(new InvalidDataError(INVALID_DATA.MESSAGE));
       } else {
         next(err);
       }
@@ -41,14 +44,14 @@ module.exports.deleteCard = (req, res, next) => {
           })
           .catch((err) => next(err));
       } else if (card) {
-        next({ statusCode: FORBIDDEN.CODE, message: FORBIDDEN.MESSAGE });
+        next(new ForbiddenError(FORBIDDEN.MESSAGE));
       } else if (!card) {
-        next({ statusCode: NOT_FOUND.CODE, message: NOT_FOUND.CARD_MESSAGE });
+        next(new NotFoundError(NOT_FOUND.CARD_MESSAGE));
       }
     })
     .catch((err) => {
       if (err.name === 'CastError') {
-        next({ statusCode: INVALID_DATA.CODE, message: INVALID_DATA.MESSAGE });
+        next(new InvalidDataError(INVALID_DATA.MESSAGE));
       } else {
         next(err);
       }
@@ -65,12 +68,12 @@ module.exports.likeCard = (req, res, next) => {
       if (card) {
         res.status(OK.CODE).send({ data: card, message: OK.LIKE_CARD_MESSAGE });
       } else {
-        next({ statusCode: NOT_FOUND.CODE, message: NOT_FOUND.CARD_MESSAGE });
+        next(new NotFoundError(NOT_FOUND.CARD_MESSAGE));
       }
     })
     .catch((err) => {
       if (err.name === 'CastError') {
-        next({ statusCode: INVALID_DATA.CODE, message: INVALID_DATA.MESSAGE });
+        next(new InvalidDataError(INVALID_DATA.MESSAGE));
       } else {
         next(err);
       }
@@ -87,12 +90,12 @@ module.exports.dislikeCard = (req, res, next) => {
       if (card) {
         res.status(OK.CODE).send({ data: card, message: OK.DISLIKE_CARD_MESSAGE });
       } else {
-        next({ statusCode: NOT_FOUND.CODE, message: NOT_FOUND.CARD_MESSAGE });
+        next(new NotFoundError(NOT_FOUND.CARD_MESSAGE));
       }
     })
     .catch((err) => {
       if (err.name === 'CastError') {
-        next({ statusCode: INVALID_DATA.CODE, message: INVALID_DATA.MESSAGE });
+        next(new InvalidDataError(INVALID_DATA.MESSAGE));
       } else {
         next(err);
       }
