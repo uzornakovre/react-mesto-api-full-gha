@@ -1,4 +1,4 @@
-# :small_orange_diamond: Интерактивный сайт "Mesto" (фронтенд + бекенд)
+# :small_orange_diamond: Интерактивный сайт ["Mesto"](https://mesto-project.website/) (фронтенд + бекенд)  
 *Проектная работа на курсе в Яндекс Практикум*  
 *Портировано на React.js с [:link: предыдущего проекта](https://github.com/uzornakovre/mesto)*
 ______
@@ -56,6 +56,6 @@ ______
 
 ## *Дополнительная информация для ревью:*
 
-IP 84.201.165.2
-Frontend https://mesto-project.website/
-Backend https://api.mesto-project.website/
+IP 84.201.165.2  
+Frontend https://mesto-project.website/  
+Backend https://api.mesto-project.website/  
