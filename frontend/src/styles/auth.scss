@@ -1,0 +1,145 @@
+.auth {
+  max-width: 358px;
+  min-height: 581px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+
+  @media screen and (max-width: 570px) {
+    width: 282px;
+    padding: 0 22px;
+  }
+
+  &__title {
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+    color: #FFF;
+    margin: 0;
+    margin-top: 25px;
+    margin-bottom: 46px;
+    text-align: center;
+
+    @media screen and (max-width: 570px) {
+      font-size: 18px;
+      line-height: 22px;
+      margin-top: 0;
+      margin-bottom: 75px;
+    }
+  }
+
+  &__input {
+    box-sizing: border-box;
+    width: 100%;
+    background-color: inherit;
+    color: #FFF;
+    border: none;
+    border-bottom: 2px solid #CCC;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    padding-bottom: 9px;
+    margin-bottom: 5px;
+
+    &:focus {
+      border-color: yellow;
+      outline: none;
+    }
+
+    &::placeholder {
+      color: #CCC;
+    }
+
+    &_error {
+      border-color: #F00;
+
+      &:focus {
+        border-color: #F00;
+      }
+    }
+  }
+
+  &__input-error {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 15px;
+    color: #FF0000;
+    min-height: 30px;
+    display: block;
+  }
+
+  &__link {
+    color: #FFF;
+    text-decoration: none;
+    transition: opacity .2s linear;
+
+    &:hover {
+      opacity: .7;
+    }
+
+    &:active {
+      opacity: .5;
+    }
+  }
+
+  &__submit {
+    width: 100%;
+    color: #000;
+    background-color: #FFF;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    transition: all .2s linear;
+    cursor: pointer;
+
+    &:hover {
+      font-size: 20px;
+    }
+
+    &:active {
+      opacity: .5;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 1px 1px 10px #000;
+    }
+
+    &_disabled {
+      color: #FFF;
+      background-color: transparent;
+      border: 1px solid #FFF;
+      opacity: .5;
+      cursor: default;
+
+      &:hover {
+        opacity: .5;
+        font-size: 18px;
+      }
+
+      &:active {
+        opacity: .5;
+      }
+    }
+
+    @media screen and (max-width: 570px) {
+      margin-top: 140px;
+      font-size: 14px;
+      line-height: 17px;
+    }
+  }
+
+  &__tip {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #FFF;
+  }
+}
