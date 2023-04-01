@@ -42,22 +42,7 @@ ______
 [:link: Открыть веб-сайт приложения](https://mesto-project.website/)  
 [:link: Открыть макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
 ------
-[![Tests](https://github.com/yandex-praktikum/react-mesto-api-full-gha/actions/workflows/tests.yml/badge.svg)](https://github.com/yandex-praktikum/react-mesto-api-full-gha/actions/workflows/tests.yml)
 ![GitHub repo size](https://img.shields.io/github/repo-size/uzornakovre/react-mesto-api-full-gha?color=yellow&style=flat-square) ![GitHub last commit](https://img.shields.io/github/last-commit/uzornakovre/react-mesto-api-full-gha?color=blue&style=flat-square) ![GitHub Repo stars](https://img.shields.io/github/stars/uzornakovre/react-mesto-api-full-gha?color=pink&style=flat-square)  
-
-------
-
-## *Для ревью:*
-
-Адрес репозитория: https://github.com/uzornakovre/react-mesto-api-full-gha
-
-Ссылки на проект:
-
-IP 84.201.165.2
-
-Frontend https://mesto-project.website/
-
-Backend https://api.mesto-project.website/
 
 ------
 
@@ -66,4 +51,3 @@ Backend https://api.mesto-project.website/
 [![Скриншот страницы](https://i.ibb.co/KNqpgnK/mesto3.jpg)](https://mesto-project.website/)  
 
 [![Скриншот страницы](https://i.ibb.co/gZ5bndC/mesto2.jpg)](https://mesto-project.website/)
-
