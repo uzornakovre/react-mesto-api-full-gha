@@ -51,3 +51,11 @@ ______
 [![Скриншот страницы](https://i.ibb.co/KNqpgnK/mesto3.jpg)](https://mesto-project.website/)  
 
 [![Скриншот страницы](https://i.ibb.co/gZ5bndC/mesto2.jpg)](https://mesto-project.website/)
+
+------
+
+## *Дополнительная информация для ревью:*
+
+IP 84.201.165.2
+Frontend https://mesto-project.website/
+Backend https://api.mesto-project.website/
