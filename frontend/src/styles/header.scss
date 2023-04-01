@@ -13,9 +13,11 @@
     padding-bottom: 28px;
   }
 
-  @media screen and (max-width: 570px) {
-    flex-direction: column-reverse;
-    align-items: flex-start;
+  &_logged-in {
+    @media screen and (max-width: 570px) {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+    }
   }
 
   &__icons {
@@ -46,7 +48,7 @@
     gap: 24px;
 
     @media screen and (max-width: 980px) {
-        padding-right: 27px;
+      padding-right: 27px;
     }
 
     &_logged-in {
