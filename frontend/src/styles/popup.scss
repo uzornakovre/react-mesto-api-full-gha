@@ -55,6 +55,11 @@
     flex-direction: column;
     margin: 0 auto;
 
+    @media screen and (max-width: 570px) {
+      width: 282px;
+      padding: 25px 22px;
+    }
+
     &_opened {
       opacity: 1;
       visibility: visible;
@@ -71,11 +76,6 @@
       display: flex;
       flex-direction: column;
       margin: 0 auto;
-    }
-
-    @media screen and (max-width: 570px) {
-      width: 282px;
-      padding: 25px 22px;
     }
   }
 

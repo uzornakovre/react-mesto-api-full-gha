@@ -16,14 +16,14 @@ function Header({ loggedIn, children }) {
   }, [loggedIn]);
 
   return (
-    <header className={`header ${loggedIn && 'header__logged-in'}`}>
+    <header className={`header ${loggedIn && 'header_logged-in'}`}>
       <div className="header__icons">
         <img className="header__logo"
              src={headerLogo}
              alt="Логотип Место" />
-        {loggedIn &&         
+        {loggedIn &&
         <div className="burger">
-          <input className="burger__switcher" 
+          <input className="burger__switcher"
                  id="burgerSwitcher"
                  type="checkbox"
                  onChange={toggleAccountInfo} />
