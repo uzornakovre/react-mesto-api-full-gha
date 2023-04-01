@@ -1,0 +1,116 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+  padding-top: 45px;
+  padding-bottom: 37px;
+  border-bottom: 1px solid rgba(84, 84, 84, .7);
+  margin-bottom: 40px;
+
+  @media screen and (max-width: 980px) {
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+
+  @media screen and (max-width: 570px) {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+
+  &__icons {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media screen and (max-width: 980px) {
+      padding-left: 27px;
+    }
+
+    @media screen and (max-width: 570px) {
+      padding-right: 27px;
+    }
+  }
+
+  &__logo {
+    @media screen and (max-width: 980px) {
+      max-width: 104px;
+    }
+  }
+
+  &__account {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+
+    @media screen and (max-width: 980px) {
+        padding-right: 27px;
+    }
+
+    &_logged-in {
+      @media screen and (max-width: 570px) {
+        display: none;
+        width: 100%;
+        border-bottom: 1px solid rgba(84, 84, 84, .7);
+        align-self: center;
+        align-items: center;
+        gap: 18px;
+        flex-direction: column;
+        padding: 0;
+        padding-bottom: 40px;
+        margin-bottom: 28px;
+        transition: all .5s linear;
+      }
+    }
+
+    &_logged-in .header__link {
+      font-size: 18px;
+    }
+
+    &_visible {
+      display: flex;
+    }
+  }
+
+  &__email {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.22;
+  }
+
+  &__link {
+    text-decoration: none;
+    background-color: inherit;
+    border: none;
+    padding: 0;
+    color: #FFF;
+    font-size: 18px;
+    line-height: 1.22;
+    transition: all .2s linear;
+
+    &:hover {
+      cursor: pointer;
+      opacity: .7;
+    }
+
+    &:active {
+      opacity: .5;
+    }
+
+    @media screen and (max-width: 570px) {
+      font-size: 14px;
+      line-height: 17px;
+    }
+
+    &_logged-in {
+      color: #A9A9A9;
+
+      &:hover {
+        opacity: 1;
+        color: #FFF;
+      }
+    }
+  }
+}

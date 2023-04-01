@@ -1,0 +1,67 @@
+.burger {
+  display: flex;
+  justify-content: center;
+
+  &__button {
+    background-color: inherit;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    z-index: 3;
+
+    @media screen and (max-width: 570px) {
+      display: flex;
+    }
+  }
+
+  &__line {
+    content: '';
+
+    &::before {
+      content: '';
+      top: 9px;
+    }
+
+    &::after {
+      content: '';
+      top: -9px;
+    }
+  }
+
+  &__line, &__line::before, &__line::after {
+    @media screen and (max-width: 570px) {
+      display: block;
+      position: absolute;
+      width: 24px;
+      height: 3px;
+      background-color: #FFF;
+      transition: all .5s cubic-bezier(.25,.75,.25,.75);
+    }
+  }
+
+  &__switcher {
+    opacity: 0;
+  }
+
+  @media screen and (max-width: 570px) {
+    &__switcher:checked ~ &__button > &__line {
+      transform: rotate(-360deg);
+      background-color: transparent;
+      height: 20px;
+      border-radius: 50%;
+    }
+
+    &__switcher:checked ~ &__button > &__line::after {
+      top: 9px;
+      transform: rotate(-315deg);
+    }
+
+    &__switcher:checked ~ &__button > &__line::before {
+      top: 9px;
+      transform: rotate(-405deg);
+    }
+  }
+}

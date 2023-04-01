@@ -1,0 +1,62 @@
+.elements {
+  padding-top: 50px;
+  margin: 0 auto;
+
+  &__list {
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(auto, 282px));
+    grid-column-gap: 17px;
+    grid-row-gap: 20px;
+    justify-content: center;
+    justify-items: stretch;
+    align-items: stretch;
+    list-style: none;
+
+    @media screen and (max-width: 980px) {
+      padding-top: 36px;
+      grid-template-columns: repeat(2, minmax(282px, 50%));
+    }
+
+    @media screen and (max-width: 767px) {
+      grid-template-columns: minmax(282px, 100%);
+    }
+  }
+
+  &__list-item {
+    position: relative;
+    transition: transform .2s ease-out;
+
+    &:hover {
+      transform: scale(1.02);
+
+      @media screen and (max-width: 767px) {
+        transform: none;
+      }
+    }
+  }
+
+  &__button-remove {
+    display: none;
+    position: absolute;
+    width: 18px;
+    height: 19px;
+    padding: 0;
+    border: none;
+    background-color: initial;
+    background-image: url('../images/trash.svg');
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    transition: opacity .2s linear;
+
+    &:hover {
+      opacity: .6;
+    }
+
+    &:active {
+      opacity: .4;
+    }
+  }
+}
