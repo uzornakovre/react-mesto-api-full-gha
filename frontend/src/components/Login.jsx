@@ -21,7 +21,6 @@ function Login ({ handleLogin, openInfoToolTip, formData }) {
       })
       .catch((error) =>{
         openInfoToolTip('error', 'Неверный логин или пароль.');
-        console.log(error);
       })
   }
 
